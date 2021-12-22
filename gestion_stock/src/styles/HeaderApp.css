@@ -1,0 +1,161 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: 'Popins',sans-serif;
+
+}
+#message,#commande,#caisse,#parametre{
+    visibility: hidden;
+}
+:root{
+    --clr:#84a1b9;
+    --colHead:#fdba01;
+    
+}
+body{
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-color: var(--clr);
+}
+.navigate{
+    margin-top: 3%;
+    position: relative;
+    width: 100%;
+    height: 70px;
+    background-color: #fff;
+    display: flex;
+    /* justify-content: end; */
+    align-items: center;
+    border-radius: 5px;
+}
+.navigate ul{
+    display: flex;
+    padding-right: 20px;
+    width: 350px;
+    justify-content: space-between;
+}
+.navigate ul li{
+    position: relative;
+    list-style: none;
+    margin: 10vh;
+    width: 100px;
+    height: 70px;
+    z-index: 1;
+}
+.navigate ul li a{
+    position: relative;
+    display: block;
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    /* text-align: center; */
+    font-weight: 500;
+}
+.navigate ul li a .icon
+{
+    position: relative;
+    display: block;
+    line-height: 75px;
+    font-size: 2.5em;
+    text-align: center;
+    transition: 0.5s;
+    color: var(--clr);
+}
+.navigate ul li.active a .icon{
+ transform: translateY(-35px);
+}
+.navigate ul li a .text{
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    font-size: 1.30em;
+    letter-spacing: 0.1em;
+    transition: .5s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+.navigate ul li.active a .text{
+    opacity: 1;
+    transform: translateY(-30px);
+}
+.navigate .indicator{
+    position: absolute;
+    top: -55%;
+    left:22%;
+    width: 80px;
+    height: 80px;
+    background-color: var(--colHead);
+    border-radius: 50%;
+    border: 6px solid var(--clr);
+    transition: .5s;
+}
+.navigate .indicator::before{
+    content: '';
+    top: 45%;
+    position: absolute;
+    left: -23px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    box-shadow: 0px -10px 0 0 var(--clr);
+
+
+}
+.navigate .indicator::after{
+    content: '';
+    top: 46%;
+    position: absolute;
+    left: 71px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-left-radius: 20px;
+    box-shadow: 0px -10px 0 0 var(--clr);
+
+
+}
+
+.navigate ul li:nth-child(1).active ~ .indicator
+{
+    position: absolute;
+    top: -55%;
+    left:49vh;
+}
+
+.navigate ul li:nth-child(2).active ~ .indicator
+{
+    position: absolute;
+    top: -55%;
+    left:75vh;
+}
+.navigate ul li:nth-child(3).active ~ .indicator
+{
+    position: absolute;
+    top: -55%;
+    left:101vh;
+}
+.navigate ul li:nth-child(4).active ~ .indicator
+{
+    position: absolute;
+    top: -55%;
+    left:128vh;
+}
+.navigate ul li:nth-child(5).active ~ .indicator
+{
+    position: absolute;
+    top: -55%;
+    left:154vh;
+}
+.navigate ul li:nth-child(6).active ~ .indicator
+{
+    position: absolute;
+    top: -55%;
+    left:181vh;
+}
+.navigate ul li a .active .text:nth-child(1){
+    left: 2%;
+    color:red;
+}

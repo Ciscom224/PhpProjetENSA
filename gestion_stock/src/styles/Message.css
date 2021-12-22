@@ -1,0 +1,12 @@
+.openMessage{
+    background:white;
+}
+.noOpen{
+    background: rgba(220, 20, 60, 0.349);
+}
+tr{
+    cursor: pointer;
+}
+table{
+    border-radius: 10px;
+}

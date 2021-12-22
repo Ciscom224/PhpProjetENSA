@@ -1,0 +1,98 @@
+.carde{
+    position: relative;
+    top: 5%;
+    width: 250px;
+    height: 300px;
+    text-align: center;
+    z-index: 10;
+    margin: 20px 20px 60px;
+    cursor: pointer;
+}
+.carde .box{
+    position:absolute;
+     width: 100%;
+    height: 100%; 
+    display: flex;
+    justify-content: center;
+    border: 2px solid #0140fd;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow:0 15px 35px rgba(0, 0, 0, 0.5) ;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+.percent{
+    position: relative;
+    top: 0%;
+    left: 0%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.percent .number{
+    position:absolute;
+    top: 27%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.percent .number h2{
+    color:#fff;
+    font-weight: 700;
+    font-size: 50px;
+}
+.percent .number h2 span{
+    font-size: 24px;
+}
+ .carde .text{
+     position: relative;
+     width: 85%;
+     bottom: -90%;
+     left: 50%;
+     transform: translateX(-50%);
+     text-align: center;
+     padding: 30px 20px 10px;
+     background: var(--colHead);
+     border-radius: 10px;
+     font-weight: 800;
+     font-size: 18px;
+     letter-spacing: 1px;
+     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+     z-index: -1;
+     pointer-events:none;
+     transition: bottom 0.5s,z-index 0s,transform 0.5s,padding 0.5s;
+     transition-delay: 0.3s,0.3s,0s,0.3s;
+     color: #fff;
+ }
+ .carde:hover .text{
+     transition-delay: 0s,0.3s,0.3s,0s;
+     bottom: -103%;
+     z-index: 11;
+     transform: translateX(-50%) translateY(-43px);
+     padding: 10px 20px 10px;
+ }
+svg{
+    display: relative;
+    width: 150px;
+    height: 150px;
+}
+svg circle{
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke-width: 10;
+    stroke: rgba(255, 255, 255, 0.5);
+    transform:translate(5px,5px);
+    stroke-linecap: round;
+}
+svg circle:nth-child(2){
+    stroke: var(--colHead);
+    stroke-dasharray: 440px;
+    stroke-dashoffset:calc(440px - (440px*90)/100);
+}
+
