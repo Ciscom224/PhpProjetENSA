@@ -42,7 +42,13 @@ function Parametre() {
                         </div>
                     </div>
                     <div className='footer '>
-                    <Button className='btn btn-danger'>
+                    <Button className='btn btn-danger'
+                         onClick={() => {
+                            $('.parametre').hide().css({
+                              'visibility': 'hidden'
+                          });
+                          }}
+                    >
                         Annuler
                     </Button>
                     <Button className='btn editBtn'>

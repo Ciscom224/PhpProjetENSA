@@ -1,9 +1,12 @@
 import { useState } from 'react'
+import { Navbar,Nav } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 import {useEffect } from 'react'
 import '../styles/HeaderApp.css'
 import Modal from './Modal';
 import Message from './Message';
 import Parametre from './Parametre'
+import App from '../App'
 import $ from 'jquery';
 import Fournisseur from './Fournisseur';
 import Caisse from './Caisse';
@@ -37,7 +40,7 @@ function HeaderApp() {
                     'visibility': 'visible'
                 })
             }
-            else if($(this).hasClass('caisse')){
+            else if($(this).hasClass('caisses')){
                 $('#caisse').show(100).css({
                     'visibility': 'visible'
                 })
@@ -62,7 +65,7 @@ function HeaderApp() {
         
     })
     return (
-        <div className='navigate container-fluid'>
+        <Navbar className='navigate nav'>
             <h1>Gestion de Stock</h1>
            <ul>
                <li className='list active'>
@@ -73,20 +76,23 @@ function HeaderApp() {
                         <span className='text'>Accueil</span>
                     </a>
                </li>
-               <li className='list caisse'>
-                    <a href='#'>
+               <li className='list caisses'>
+                   <Nav.Link>
+                   <a href='#'>
                         <span className='icon'>
                             <ion-icon name="cart"></ion-icon>
                         </span>
                         <span className='text'>Caisse</span>
                     </a>
+                   </Nav.Link>
+                   
                </li>
                <li className='list fournisseur'>
                     <a href='#'>
                         <span className='icon'>
                             <ion-icon name="contacts"></ion-icon>
                         </span>
-                        <span className='text'>Fournisseur</span>
+                        <span className='text'>Commande</span>
                     </a>
                </li>
                <li className='list messageModal'>
@@ -129,7 +135,7 @@ function HeaderApp() {
            <div id='parametre'>
                 <Parametre />
            </div>
-        </div>
+        </Navbar>
     )
 
    
