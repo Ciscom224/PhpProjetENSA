@@ -22,6 +22,16 @@ class CreateEmployesTable extends Migration
             $table->integer('connecte')->default(0);
             $table->timestamps();
         });
+
+        Schema::table('employes', function($table)
+        {
+            $table->string('caisse_id');
+            $table->foreign('caisse_id')
+                        ->references('caisse_id')
+                        ->on('caisses')
+                        ->onDelete('cascade')
+                        ->onUpdate('cascade');
+        });
     }
 
     /**
