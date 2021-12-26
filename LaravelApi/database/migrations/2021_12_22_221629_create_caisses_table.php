@@ -14,7 +14,7 @@ class CreateCaissesTable extends Migration
     public function up()
     {
         Schema::create('caisses', function (Blueprint $table) {
-            $table->string('caisse_id')->unique();
+            $table->integer('caisse_id')->unique();
             $table->string('nom_caisse');
             $table->timestamps();
         });

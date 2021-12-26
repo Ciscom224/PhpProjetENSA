@@ -25,7 +25,7 @@ class CreateEmployesTable extends Migration
 
         Schema::table('employes', function($table)
         {
-            $table->string('caisse_id');
+            $table->integer('caisse_id');
             $table->foreign('caisse_id')
                         ->references('caisse_id')
                         ->on('caisses')
