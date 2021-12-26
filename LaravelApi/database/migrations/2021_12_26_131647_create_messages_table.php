@@ -17,18 +17,19 @@ class CreateMessagesTable extends Migration
             $table->id('message_id')->unique();
             $table->string('titre');
             $table->text('contenu');
+            $table->integer('employe_id');
             $table->timestamps();
+
         });
 
-        Schema::table('messages', function($table)
-        {
-            $table->integer('employe_id');
-            $table->foreign('employe_id')
-                        ->references('matricule')
-                        ->on('employes')
-                        ->onDelete('cascade')
-                        ->onUpdate('cascade');
-        });
+        // Schema::table('messages', function($table)
+        // {
+        //     $table->integer('employe_id');
+        //     $table->foreign('employe_id')
+        //                 ->references('matricule')
+        //                 ->on('employes');
+
+        // });
     }
 
     /**

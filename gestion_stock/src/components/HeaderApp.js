@@ -6,7 +6,6 @@ import '../styles/HeaderApp.css'
 import Modal from './Modal';
 import Message from './Message';
 import Parametre from './Parametre'
-import App from '../App'
 import $ from 'jquery';
 import Fournisseur from './Fournisseur';
 import Caisse from './Caisse';

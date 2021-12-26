@@ -14,8 +14,7 @@ class CreateEmployesTable extends Migration
     public function up()
     {
         Schema::create('employes', function (Blueprint $table) {
-            $table->id();
-            $table->integer('Matricule')->unique;
+            $table->integer('employe_id')->unique;
             $table->string('Nom');
             $table->string('prenom');
             $table->string('pass');
@@ -28,9 +27,7 @@ class CreateEmployesTable extends Migration
             $table->integer('caisse_id');
             $table->foreign('caisse_id')
                         ->references('caisse_id')
-                        ->on('caisses')
-                        ->onDelete('cascade')
-                        ->onUpdate('cascade');
+                        ->on('caisses');
         });
     }
 

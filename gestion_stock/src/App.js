@@ -5,7 +5,7 @@ import Accueil from './pages/Accuiel'
 import Fournisseur from './components/Fournisseur';
 import Caisse from './components/Caisse';
 import Message from './components/Message';
-import { Modal } from 'react-bootstrap';
+import AddFour from './pages/AddFour';
 
 function App() {
   return (
@@ -16,14 +16,9 @@ function App() {
         <Route exact path="/commander" element={<Fournisseur/>} />
         <Route exact path="/caisses" element={<Caisse/>} />
         <Route exact path="/messages" element={<Message/>} />
+        <Route exact path="/addFournisseur" element={<AddFour/>} />
       </Routes>
     </Router>
-    // <div className="App">
-    //   <HeaderApp/>
-    //   <div className='container'>
-    //   <Article/>
-    //   </div>
-    // </div>
   );
 }
 

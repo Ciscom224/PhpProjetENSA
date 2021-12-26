@@ -28,7 +28,7 @@ class CreateLivraisonsTable extends Migration
                         ->onDelete('cascade')
                         ->onUpdate('cascade');
 
-            $table->string('article_id');
+            $table->integer('article_id');
             $table->foreign('article_id')
                         ->references('article_id')
                         ->on('articles')

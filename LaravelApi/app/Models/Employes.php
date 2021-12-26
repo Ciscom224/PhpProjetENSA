@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Employes extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'matricule';
+    protected $primaryKey = 'employe_id';
 }
