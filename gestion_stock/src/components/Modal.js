@@ -18,7 +18,7 @@ class Modal extends Component {
     AjoutEmploye= async (e)=>{
       e.preventDefault()
 
-      const res= await axios.post('http://127.0.0.1:8000/api/employe/store',this.state)
+      const res= await axios.post('http://127.0.0.1:8001/api/employe/store',this.state)
       console.log(res.data.message);
       this.setState({
         nom:'',

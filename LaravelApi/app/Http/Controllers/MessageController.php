@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employes;
+use App\Models\Messages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class EmployeController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,11 @@ class EmployeController extends Controller
      */
     public function index()
     {
-        //
+        $messages=Messages::all();
+        return response()->json([
+            'message'=>$messages,
+            'status'=>302,
+        ]);
     }
 
     /**
@@ -33,18 +38,20 @@ class EmployeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$exp)
     {
-        $employe=new Employes();
-        $employe->nom=$request->input('nom');
-        $employe->prenom=$request->input('prenom');
-        $employe->pass=$request->input('pass');
-        $employe->employe_id=random_int(29,9999);
-        $employe->save();
+        $message=new  Messages();
+
+
+        $message->titre=$request->input('titre');
+        $message->contenu=$request->input('contenu');
+        $message->employe_id=$exp;
         return response()->json([
-            'status' => 200,
-            'message' =>'Employé ajouté !!'
+            'status'=>211,
+            'message'=>'message envoyer'
+
         ]);
+
     }
 
     /**
@@ -89,6 +96,10 @@ class EmployeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::delete('delete messages where message_id = ?',$id);
+        return response()->json([
+            'status'=>201,
+            'message'=>'suppression de message'
+        ]);
     }
 }

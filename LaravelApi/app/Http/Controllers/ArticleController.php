@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Articles;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
@@ -13,7 +15,12 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles=Articles::all();
+        return response()->json([
+            'articles'=>$articles,
+            'status'=>201,
+            'message'=>'vous  trouverez tout les articles ici'
+        ]);
     }
 
     /**
@@ -34,7 +41,16 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article=new Articles();
+
+        $article->article_id=random_int(1,10000);
+        $article->nom_art=$request->input('designation');
+        $article->prix=$request->input('prix');
+
+        return response()->json([
+            'status'=>202,
+            'message'=>'article ajouter'
+        ]);
     }
 
     /**
@@ -45,7 +61,12 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        $article=DB::select('select * from articles where article_id = ?',$id);
+        return response()->json([
+            'status'=>404,
+            'article'=>$article,
+            'message'=>'affichage article courant'
+        ]);
     }
 
     /**
@@ -80,5 +101,12 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         //
+       DB::delete('delete articles where article_id = ?', $id);
+
+       return response()->json([
+           'status'=>401,
+           'message'=>'suppression article courant'
+       ]);
+
     }
 }

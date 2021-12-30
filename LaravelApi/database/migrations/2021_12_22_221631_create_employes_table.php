@@ -15,7 +15,7 @@ class CreateEmployesTable extends Migration
     {
         Schema::create('employes', function (Blueprint $table) {
             $table->integer('employe_id')->unique;
-            $table->string('Nom');
+            $table->string('nom');
             $table->string('prenom');
             $table->string('pass');
             $table->integer('connecte')->default(0);
@@ -24,7 +24,7 @@ class CreateEmployesTable extends Migration
 
         Schema::table('employes', function($table)
         {
-            $table->integer('caisse_id');
+            $table->integer('caisse_id')->nullable();
             $table->foreign('caisse_id')
                         ->references('caisse_id')
                         ->on('caisses');
