@@ -2,8 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\EmployeController;
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\FournisseurController;
 
 /*
@@ -35,3 +36,5 @@ Route::match(['post','get'],'/message/list',[MessageController::class,'index']);
 Route::match(['post','get'],'/message/destroy',[MessageController::class,'destroy']);
 
 
+//-------------------Categorie----------------------
+Route::match(['get', 'post'], '/categorie/{id}', [CategorieController::class,'show']);

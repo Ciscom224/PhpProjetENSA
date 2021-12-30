@@ -19,6 +19,15 @@ class CreateArticlesTable extends Migration
             $table->float('prix');
             $table->timestamps();
         });
+
+        Schema::table('articles', function($table)
+        {
+            $table->integer('categorie_id');
+            $table->foreign('categorie_id')
+                        ->references('categorie_id')
+                        ->on('categories');
+
+        });
     }
 
     /**

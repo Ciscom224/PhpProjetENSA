@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import { Button,Form,Table } from 'react-bootstrap';
+import {Table } from 'react-bootstrap';
+import {BrowserRouter as Router,Link} from "react-router-dom";
 import "../styles/Message.css";
 import $ from 'jquery';
 
 function Message({ mode }) {
     const isOpen = true;
+    const id=10
     // useEffect(() => {
         
     // })
@@ -36,7 +38,11 @@ function Message({ mode }) {
                     </tr>
                     <tr>
                         <td colSpan={3}>Ciscom</td>
-                        <td><ion-icon name="mail-open"></ion-icon></td>
+                        <td>
+                          <Link to={`showMessage/${id}`} >
+                               <ion-icon name="mail-open"></ion-icon>
+                          </Link>
+                          </td>
                         <td><ion-icon name="close"></ion-icon></td>
                     </tr>
                     <tr>
