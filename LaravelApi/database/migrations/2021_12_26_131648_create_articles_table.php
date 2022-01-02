@@ -14,19 +14,12 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->integer('article_id')->unique();
+            $table->string('article_id')->unique();
             $table->string('designation');
             $table->float('prix');
+            $table->integer('quantite')->default(0);
+            $table->integer('categorie');
             $table->timestamps();
-        });
-
-        Schema::table('articles', function($table)
-        {
-            $table->integer('categorie_id');
-            $table->foreign('categorie_id')
-                        ->references('categorie_id')
-                        ->on('categories');
-
         });
     }
 

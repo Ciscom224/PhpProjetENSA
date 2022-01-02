@@ -77,3 +77,7 @@
   #cancelBtn {
     background-color: crimson;
   }
+
+  .info{
+    visibility: hidden;
+  }

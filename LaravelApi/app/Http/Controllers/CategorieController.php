@@ -46,12 +46,24 @@ class CategorieController extends Controller
      */
     public function show($id)
     {
-        // $catArticle=DB::select('select * from articles where categorie_id = ?', $id);
+       
+        $catArticle=DB::table('articles')->where('categorie',$id)->get();
 
         return response()->json([
             'status'=>201,
-            // 'catArticle'=>$catArticle,
+            'catArticle'=>$catArticle,
             'message'=>'les infos sur le cat'
+        ]);
+    }
+
+
+    
+    public function statCat(){
+
+        $statList=DB::select('select categorie,sum(quantite),count(*) from articles group by categorie');
+        return response()->json([
+            'catelist'=> $statList,
+            'status'=>20
         ]);
     }
 

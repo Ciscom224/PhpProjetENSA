@@ -1,15 +1,56 @@
-import React, { useEffect } from "react";
+import React, { Component } from 'react'
 import {Table } from 'react-bootstrap';
 import {BrowserRouter as Router,Link} from "react-router-dom";
 import "../styles/Message.css";
-import $ from 'jquery';
+import $, { get } from 'jquery';
+import axios from "axios";
 
-function Message({ mode }) {
+class Message extends Component {
+  state={
+    'messages':[],
+    'loading':true
+  }
+  async componentDidMount(){
+    const res= await axios.get('http://127.0.0.1:8001/api/message/list')
+    console.log(res.data);
+    this.setState({
+      'messages':res.data.messages,
+      'loading':false
+    })
+  }
+  render(){
+
+    var VAR_HTMLTABLE=""
+ 
+      if (this.state.loading) {
+        VAR_HTMLTABLE=<tr><td colSpan={5}><h2>Loading...</h2></td></tr>
+      } else {
+        VAR_HTMLTABLE=
+        this.state.messages.map((item)=>{
+          return(
+          
+            <tr key={item.message_id}>
+                <td>{item.nom}</td>
+                <td>{item.prenom}</td>
+                <td>{item.titre}</td>
+                <td>
+                  <Link to={`showMessage/${item.message_id}`} >
+                    <ion-icon name="mail-open"></ion-icon>
+                  </Link>
+                </td>
+                <td>
+                  <Link to={`delMessage/${item.message_id}`} >
+                    <ion-icon name="close"></ion-icon>
+                  </Link>
+                </td>
+            </tr>
+          )
+        })
+      }
+
+    
     const isOpen = true;
     const id=10
-    // useEffect(() => {
-        
-    // })
   return (
 
     <div className="modalBackground message">
@@ -31,25 +72,7 @@ function Message({ mode }) {
         <div className="body row">
             <Table striped bordered hover variant="">
                 <tbody>
-                    <tr className={isOpen ? 'openMessage' : 'noOpen'}>
-                        <td colSpan={3} >Mark</td>
-                        <td><ion-icon name="mail-open"></ion-icon></td>
-                        <td><ion-icon name="close"></ion-icon></td>
-                    </tr>
-                    <tr>
-                        <td colSpan={3}>Ciscom</td>
-                        <td>
-                          <Link to={`showMessage/${id}`} >
-                               <ion-icon name="mail-open"></ion-icon>
-                          </Link>
-                          </td>
-                        <td><ion-icon name="close"></ion-icon></td>
-                    </tr>
-                    <tr>
-                        <td colSpan={3}>Sara</td>
-                        <td><ion-icon name="mail-open"></ion-icon></td>
-                        <td><ion-icon name="close"></ion-icon></td>
-                    </tr>
+                  {VAR_HTMLTABLE}
                 </tbody>
             </Table>
         </div>
@@ -68,6 +91,7 @@ function Message({ mode }) {
       </div>
     </div>
   );
+          }
 }
 
 export default Message;

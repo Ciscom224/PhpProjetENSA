@@ -9,4 +9,11 @@ class Articles extends Model
 {
     use HasFactory;
     protected $primaryKey = 'article_id';
+    protected $fillable=[
+        'article_id',
+        'designation',
+        'prix',
+        'quantite',
+        'categorie'
+    ];
 }

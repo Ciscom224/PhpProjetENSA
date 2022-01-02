@@ -15,9 +15,12 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages=Messages::all();
+        $messages = DB::table('messages')
+            ->join('employes', 'messages.employe_id', '=', 'employes.employe_id')
+            ->select('employes.nom', 'employes.prenom', 'messages.*')
+            ->get();
         return response()->json([
-            'message'=>$messages,
+            'messages'=>$messages,
             'status'=>302,
         ]);
     }
@@ -62,7 +65,12 @@ class MessageController extends Controller
      */
     public function show($id)
     {
-        //
+        $message=Messages::find($id);
+
+        return response()->json([
+            'status'=>2020,
+            'message'=>$message
+        ]);
     }
 
     /**

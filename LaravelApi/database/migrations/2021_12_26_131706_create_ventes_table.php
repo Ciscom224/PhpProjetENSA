@@ -16,7 +16,7 @@ class CreateVentesTable extends Migration
         Schema::create('ventes', function (Blueprint $table) {
             $table->id();
             $table->integer('employe_id');
-            $table->integer('article_id');
+            $table->string('article_id');
             $table->timestamps();
         });
 

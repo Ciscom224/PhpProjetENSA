@@ -43,13 +43,15 @@ class ArticleController extends Controller
     {
         $article=new Articles();
 
-        $article->article_id=random_int(1,10000);
-        $article->nom_art=$request->input('designation');
+        $article->article_id=$request->input('ref');
+        $article->designation=$request->input('design');
         $article->prix=$request->input('prix');
-
+        $article->quantite=$request->input('qt');
+        $article->categorie=(int)$request->input('cat');
+        $article->save();
         return response()->json([
             'status'=>202,
-            'message'=>'article ajouter'
+            'message'=>'Produit ajouté!!!'
         ]);
     }
 

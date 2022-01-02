@@ -1,40 +1,14 @@
+
 import React,{Component} from "react";
 import { Button,Form,Alert } from 'react-bootstrap';
 import axios from "axios";
 import "../styles/Modal.css";
 import $ from 'jquery';
-class Modal extends Component {
-    state={
-      nom:'',
-      prenom:'',
-      pass:''
-    }
-    handleInput=(e)=>{
-      this.setState({
-        [e.target.name]:e.target.value
-      })
-    }
-    AjoutEmploye= async (e)=>{
-      e.preventDefault()
-
-      const res= await axios.post('http://127.0.0.1:8001/api/employe/store',this.state)
-      console.log(res.data.message);
-      this.setState({
-        nom:'',
-        prenom:'',
-        pass:''
-      })
-      $('.info').text(res.data.message).hide(10).show(70).css({
-        'visibility': 'visible'
-      })
-
-    }
+class Loading extends Component {
+    
     render(){
-      const setOpenModal = this.props.setOpenModal
-      const res=""
 
     return (
-      <Form onSubmit={this.AjoutEmploye} >
       <div className="modalBackground">
         <div className="modalContainer">
           <div className="titleCloseBtn">
@@ -82,9 +56,9 @@ class Modal extends Component {
           </div>
         </div>
       </div>
-      </Form>
     );
   }
+
 }
 
-export default Modal;
+export default Loading;

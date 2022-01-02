@@ -59,6 +59,17 @@ class EmployeController extends Controller
     }
 
     /**
+     * connexion pour un employe ou admin 
+     * 
+     * verification de compte et renvoie d'une confirmation
+     */
+    public function login(Request $request){
+        return response()->json([
+            'message'=>'connexion',
+            'status'=>111
+        ]);
+    }
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

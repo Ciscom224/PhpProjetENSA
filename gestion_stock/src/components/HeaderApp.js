@@ -7,8 +7,9 @@ import Modal from './Modal';
 import Message from './Message';
 import Parametre from './Parametre'
 import $ from 'jquery';
-import Fournisseur from './Fournisseur';
+import Fournisseur from './Produit';
 import Caisse from './Caisse';
+import Produit from './Produit'
 function HeaderApp() {
     const [modalOpen,setModalOpen] = useState(false);
     let statMessage;
@@ -89,9 +90,9 @@ function HeaderApp() {
                <li className='list fournisseur'>
                     <a href='#'>
                         <span className='icon'>
-                            <ion-icon name="contacts"></ion-icon>
+                            <ion-icon name="add-circle"></ion-icon>
                         </span>
-                        <span className='text'>Commande</span>
+                        <span className='text'>Produit</span>
                     </a>
                </li>
                <li className='list messageModal'>
@@ -126,7 +127,7 @@ function HeaderApp() {
                 <Message />
             </div >
             <div id='commande'>
-                <Fournisseur/>
+                <Produit/>
             </div>
             <div id='caisse'>
                 <Caisse/>

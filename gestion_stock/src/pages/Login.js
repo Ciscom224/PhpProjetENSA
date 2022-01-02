@@ -1,28 +1,32 @@
 
 import React,{Component} from "react";
 import { Button,Form } from 'react-bootstrap';
+import { Link, useParams } from 'react-router-dom';
+
 import axios from "axios";
 import "../styles/Modal.css";
 
 class Login extends Component {
     state={
       mat:'',
-      pass:''
+      pass:'',
+      caisse_id:''
     }
     handleInput=(e)=>{
       this.setState({
         [e.target.name]:e.target.value
       })
     }
-    AjoutEmploye= async (e)=>{
+    connexion= async (e)=>{
+        console.log(this.state);
       e.preventDefault()
 
-      const res= await axios.post('http://127.0.0.1:8001/api/employe/login',this.state)
+      const  res= await axios.get('http://127.0.0.1:8001/api/employe/login',this.state)
       console.log(res.data.message);
       this.setState({
-        nom:'',
-        prenom:'',
-        pass:''
+        mat:'',
+        pass:'',
+        caisse_id:''
       })
 
     }
@@ -30,9 +34,10 @@ class Login extends Component {
       const setOpenModal = this.props.setOpenModal
 
     return (
-      <Form onSubmit={this.AjoutEmploye} >
+      <Form onSubmit={this.connexion} >
       <div className="modalBackground">
         <div className="modalContainer">
+               
           <div className="titleCloseBtn">
             <button
               onClick={() => {
@@ -44,12 +49,14 @@ class Login extends Component {
           </div>
           <div className="title">
             <h1>Connexion</h1>
+       
+            
           </div>
           <div className="body row">
           
                   <Form.Control type="mat" name='mat' placeholder="Matricle" className="mb-0 col-md-12"
                     onChange={this.handleInput} 
-                    value={this.state.prenom}
+                    value={this.state.mat}
                   />
                   <Form.Control type="password" name='pass' placeholder="Entrer le mot Passe" className="mb-0 col-md-12"
                     onChange={this.handleInput} 
@@ -57,12 +64,16 @@ class Login extends Component {
                   />
                    <Form.Control type="number" name='caisse_id' placeholder="Numero de caisse" className="mb-0 col-md-12"
                     onChange={this.handleInput} 
-                    value={this.state.pass}
+                    value={this.state.caisse_id}
                   />
             
           </div>
           <div className="footer">
-            <button type="submit">Connexion</button>
+              <Button type="submit">
+                  <Link to={`/accueil`} style={{textDecoration:'none' }}>
+                    Connexion
+                  </Link>
+              </Button>
           </div>
         </div>
       </div>

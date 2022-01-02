@@ -28,8 +28,8 @@ function Parametre() {
                                 
                                 <span className='editProfil profile'><ion-icon name="camera" ></ion-icon></span>
                             </div>
-                            <h5 className="user-name">Prénom</h5>
-                            <h6 className="user-email">Nom</h6>
+                            <h5 className="user-name">Mamadou</h5>
+                            <h6 className="user-email">Cissé</h6>
                         </div>
                         <div className="body">
                            
